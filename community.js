@@ -114,8 +114,9 @@
   };
   const paint = () => {
     const photo=album.photos[index];
-    picture.src=photo.src;picture.alt=photo.ko+" / "+photo.en;
-    caption.textContent=(index+1)+" / "+album.photos.length+" · "+photo.ko+" / "+photo.en;
+    const description=[photo.ko,photo.en].filter(Boolean).join(" / ");
+    picture.src=photo.src;picture.alt=description||album.titleEn||album.titleKo||"";
+    caption.textContent=(index+1)+" / "+album.photos.length+(description?" · "+description:"");
   };
   const step = delta => {if(album){index=(index+delta+album.photos.length)%album.photos.length;paint();}};
   for(const a of data.albums??[]){

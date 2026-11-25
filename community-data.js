@@ -23,11 +23,109 @@ window.templeCommunity = {
     welcomeKo: "조용히 입장하거나 퇴장하셔도 괜찮습니다. 관심 있는 친구나 지인도 환영합니다.",
     welcomeEn: "Feel free to come or go quietly. Friends are welcome."
   }],
-  albums: [{
-    titleKo: "여래사 법당", titleEn: "Inside Yeo Lai Sah",
-    photos: [
-      {src: "photos/temple-hall/beopdang-wide.webp", ko: "연등과 꽃 공양이 있는 여래사 법당", en: "Temple hall with hanging lanterns and floral offerings"},
-      {src: "photos/temple-hall/beopdang-altar.webp", ko: "법당 중앙 부처님과 불단", en: "The golden Buddha and altar at Yeo Lai Sah"}
+  albums: [
+  {
+    "titleKo": "2026년 10월 25일 · 창립 46주년 야외법회",
+    "titleEn": "October 25, 2026 · 46th Anniversary Outdoor Dharma Service",
+    "cover": "photos/2026-10-25-46th-anniversary/31.webp",
+    "photos": [
+      {
+        "src": "photos/2026-10-25-46th-anniversary/30.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/31.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/32.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/29.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/24.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/25.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/03.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/17.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/15.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/16.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/18.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/06.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/08.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/05.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/12.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/26.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/27.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/28.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/11.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/20.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/21.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/23.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/22.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/19.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/10.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/13.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/14.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/04.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/09.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/01.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/02.webp"
+      },
+      {
+        "src": "photos/2026-10-25-46th-anniversary/07.webp"
+      }
     ]
-  }]
+  }
+]
 };
