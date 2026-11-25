@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>여래사 | YeoLaiSah Buddhist Temple</title>
+  
+  <meta name="description" content="샌브루노 대한불교조계종 여래사. 승원 주지 스님의 인사말, 사찰 연혁과 일요 정기법회 안내.">
+  <!-- Google Fonts: Noto Sans KR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="base.css">
+
+  <style>
+    /* Custom Scrollbar for a premium feel */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #FAFAF5; }
+    ::-webkit-scrollbar-thumb { background: #137A63; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #0e5c4a; }
+    
+    /* Fade in animation */
+    .fade-in { animation: fadeIn 0.5s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* Scroll Reveal Animations */
+    .temple-animate .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .temple-animate .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+
+    /* Floating animation for Hero Text */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    .animate-float { animation: float 4s ease-in-out infinite; }
+  </style>
+  <link rel="stylesheet" href="temple.css">
+  <link rel="stylesheet" href="community.css">
+  <script defer src="community-data.js"></script>
+  <script defer src="community.js"></script>
+</head>
+<body class="bg-cream text-dc-dark font-sans antialiased flex flex-col min-h-screen">
+
+  <!-- Notice Modal -->
+  <div id="noticeModal" role="dialog" aria-modal="true" aria-label="일요 정기법회 안내" class="fixed inset-0 z-[100] bg-black/60 hidden items-center justify-center p-4 backdrop-blur-sm transition-opacity">
+    <div class="bg-surface w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden relative fade-in">
+      <!-- Dancheong Top Border -->
+      <div class="flex h-2 w-full">
+        <div class="flex-1 bg-dc-green"></div>
+        <div class="flex-1 bg-dc-red"></div>
+        <div class="flex-1 bg-dc-yellow"></div>
+      </div>
+      
+      <button id="notice-close" type="button" aria-label="안내 닫기" onclick="closePopup()" class="absolute top-4 right-4 text-dc-muted hover:text-dc-dark transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+      
+      <div class="p-8 text-center">
+        <h3 class="text-2xl font-bold text-dc-red mb-1">일요 정기법회 안내</h3>
+        <h4 class="text-sm font-medium text-dc-muted mb-6 tracking-wide">SUNDAY DHARMA SERVICE</h4>
+        
+        <p class="text-lg mb-2 font-medium">매주 일요일 오전 11시</p>
+        <p class="text-base mb-2">여래사 대면 법회 및 유튜브 실시간 방송이 봉행됩니다.</p>
+        <p class="text-sm text-dc-muted mb-8 italic">Join us in person or live on YouTube every Sunday at 11:00 AM.</p>
+        
+        <a href="https://www.youtube.com/channel/UCOAcFTukaAHHAxAjh-EPtNQ" target="_blank" rel="noopener noreferrer" 
+           class="inline-block w-full bg-dc-red hover:bg-red-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg hover:shadow-xl">
+          유튜브 생방송 참여 | Watch Live
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dancheong Top Accent Line -->
+  <div class="flex h-1.5 w-full fixed top-0 z-[110]">
+    <div class="flex-1 bg-dc-green"></div>
+    <div class="flex-1 bg-dc-red"></div>
+    <div class="flex-1 bg-dc-yellow"></div>
+  </div>
+
+  <!-- Header -->
+  <header id="main-header" class="bg-surface/80 backdrop-blur-md border-b border-gray-100 sticky top-1.5 z-50 transition-all duration-300">
+    <div id="nav-content" class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center transition-all duration-300">
+      <a href="#" class="group temple-brand">
+        <img src="jogye-samboryun.png" alt="조계종 삼보륜" width="44" height="44"><span>
+        <span class="block text-xl md:text-2xl font-bold text-dc-dark group-hover:text-dc-green transition-colors">
+          대한불교조계종 여래사
+        </span>
+        <span class="block text-xs md:text-sm text-dc-muted mt-0.5 tracking-wide">
+          YeoLaiSah Buddhist Temple
+        </span></span>
+      </a>
+      
+      <!-- Desktop Nav -->
+      <nav class="hidden md:block">
+        <ul class="flex space-x-8 items-center">
+          <li><a href="#about" class="font-medium hover:text-dc-green transition-colors">소개 <span class="text-xs text-dc-muted block">About</span></a></li>
+          <li><a href="#announcements" class="font-medium hover:text-dc-green">공지 <span class="text-xs text-dc-muted block">News</span></a></li>
+          <li><a href="#services" class="font-medium hover:text-dc-green transition-colors">법회 <span class="text-xs text-dc-muted block">Services</span></a></li>
+          <li><a href="#gallery" class="font-medium hover:text-dc-green transition-colors">앨범 <span class="text-xs text-dc-muted block">Gallery</span></a></li>
+          <li><a href="#donate" class="font-medium hover:text-dc-green">보시 <span class="text-xs text-dc-muted block">Donate</span></a></li>
+          <li><a href="#contact" class="font-medium hover:text-dc-green transition-colors">오시는길 <span class="text-xs text-dc-muted block">Visit</span></a></li>
+          <li>
+            <a href="https://www.youtube.com/channel/UCOAcFTukaAHHAxAjh-EPtNQ" target="_blank" rel="noopener noreferrer" 
+               class="bg-dc-red hover:bg-red-800 text-white px-4 py-2 rounded-md text-sm font-semibold transition-colors flex items-center gap-2 shadow-md">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              YouTube
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-toggle" type="button" aria-label="메뉴" aria-controls="mobile-menu" aria-expanded="false" class="md:hidden text-dc-dark p-2" onclick="toggleMobileMenu()">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </button>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div id="mobile-menu" class="hidden md:hidden bg-surface border-t border-gray-100 absolute w-full shadow-lg">
+      <ul class="px-6 py-4 space-y-4">
+        <li><a href="#about" class="block font-medium">소개 | About</a></li>
+        <li><a href="#announcements" class="block font-medium">공지 | News</a></li>
+        <li><a href="#services" class="block font-medium">법회 | Services</a></li>
+        <li><a href="#gallery" class="block font-medium">앨범 | Gallery</a></li>
+        <li><a href="#donate" class="block font-medium">보시 | Donate</a></li>
+        <li><a href="#contact" class="block font-medium">오시는길 | Visit</a></li>
+        <li>
+          <a href="https://www.youtube.com/channel/UCOAcFTukaAHHAxAjh-EPtNQ" target="_blank" rel="noopener noreferrer" class="inline-block bg-dc-red text-white px-4 py-2 rounded-md text-sm font-bold mt-2">
+            YouTube 채널
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="temple-hero" aria-labelledby="temple-welcome">
+    <img class="temple-hero-photo" src="beopdang-cover.webp" width="1536" height="1024" fetchpriority="high"
+         alt="여래사 법당 중앙의 금빛 부처님과 양옆의 꽃 공양">
+    <div class="temple-hero-copy">
+      <h1 id="temple-welcome">마음의 평화와 지혜를 찾는 도량</h1>
+      <p lang="en">A Sanctuary for Mindfulness, Peace, and Awakening</p>
+      <button type="button" class="temple-notice-button" onclick="openNotice(this)">일요법회 안내 <span lang="en">Sunday Service</span></button>
+    </div>
+  </section>
+
+  <section id="announcements" class="community-section" aria-labelledby="news-heading">
+    <header class="community-header"><p lang="en">Temple News</p><h2 id="news-heading">공지사항</h2></header>
+    <div id="homepage-flyer"></div>
+    <noscript><p>동지 법회 안내: <a href="dongji-2026-ko.webp">한국어</a> · <a href="dongji-2026-en.webp" lang="en">English</a></p></noscript>
+  </section>
+
+  <!-- About Section: Abbot & History -->
+  <section id="about" class="temple-about" aria-label="여래사 소개">
+    <article class="temple-greeting" aria-labelledby="abbot-greeting">
+      <header class="temple-intro">
+        <p class="temple-kicker" lang="en">A welcome from our abbot</p>
+        <h2 id="abbot-greeting">주지 스님 인사말</h2>
+      </header>
+      <figure class="temple-profile">
+        <img src="abbot-seungwon.webp" width="800" height="1000" loading="lazy"
+             alt="붉은빛 가사를 입고 온화하게 미소 짓는 여래사 주지 승원 스님">
+        <figcaption><strong>승원 스님</strong><span lang="en">Ven. Seungwon, Abbot</span></figcaption>
+      </figure>
+      <div class="temple-letter">
+            <p>반갑습니다. 대한불교조계종 여래사 주지 승원 인사드립니다.</p>
+            <p>세상에 아프지 않은, 또 아파보지 않았던 중생이 어디 있겠습니까. 먼 이국땅에서 각자의 삶의 무게를 짊어지고 살아가다 보면, 누구나 가슴 한구석에 묵직한 멍울 하나쯤 품고 살아가기 마련입니다.</p>
+            <p>저에게 부처님의 법문은 누군가를 훈계하거나 설득하는 고상한 이야기가 아닙니다. 아픈 이들이 가슴속에 맺힌 끄트머리를 풀어낼 수 있도록 곁에 자리를 내어주고, 제 쓰린 경험과 공명하며 그 아픔을 함께 훑어 내리는 일입니다. 비전을 제시할 만큼 수행력이 높지 않더라도, 우는 이들과 같이 울어주는 것. 그것이 제가 생각하는 가장 진실한 수행이자 해결책입니다.</p>
+            <p>1980년 창건 이래 40여 년간 북가주 한인 불자님들의 든든한 의지처가 되어온 우리 여래사는, 앞으로도 거창한 가르침을 앞세우기보다 여러분의 이야기를 들어주는 &#x27;명고수&#x27;가 되고자 합니다.</p>
+            <p>고민이 있을 때, 혹은 그저 누군가에게 속마음을 털어놓고 싶을 때 언제든 여래사를 찾아주십시오. 설득하려 하지 않고, 다그치지 않으며, 그저 여러분의 삶에 따뜻한 추임새를 넣어드리며 함께 울고 웃겠습니다.</p>
+            <p>부처님의 자비로운 시선 속에서 여러분의 지친 마음이 조금이나마 쉬어갈 수 있기를 기원합니다.</p>
+            <p>성불하십시오.</p>
+            <p class="greeting-signature">대한불교조계종 여래사 주지 승 원 합장</p>
+        <details class="temple-translation" lang="en">
+          <summary>Read the English translation</summary>
+          <div>
+            <p>Welcome. I am Seungwon, the abbot of YeoLaiSah, a temple of the Jogye Order of Korean Buddhism.</p>
+            <p>Who among us has never known pain? Living far from home and carrying the weight of our own lives, many of us hold a quiet ache somewhere in our hearts.</p>
+            <p>For me, the Buddha’s teachings are not lofty words meant to lecture or persuade. They are a way to make room beside us so those who are hurting can begin to loosen what has knotted inside, and to meet their pain with the memory of our own. Even if my practice is not deep enough to point a way forward, I can still weep with those who weep. To me, that is the most honest practice and the truest response.</p>
+            <p>Since its founding in 1980, YeoLaiSah has been a source of support for Korean Buddhists in Northern California for more than forty years. Rather than putting grand teachings first, we hope to be like a skilled drummer who listens closely to the singer and accompanies them with care.</p>
+            <p>Whenever something is weighing on you, or you simply want someone to hear what’s in your heart, please come to YeoLaiSah. We won’t try to persuade or hurry you. We will offer a warm word of encouragement and share in your tears and laughter.</p>
+            <p>May your weary heart find a little rest under the compassionate gaze of the Buddha.</p>
+            <p>May you attain Buddhahood.</p>
+            <p class="greeting-signature">With palms joined, Seungwon, Abbot of YeoLaiSah, Jogye Order of Korean Buddhism</p>
+          </div>
+        </details>
+      </div>
+    </article>
+    <section id="history" class="temple-history" aria-labelledby="history-title">
+      <header class="temple-intro">
+        <p class="temple-kicker" lang="en">Temple History</p>
+        <h2 id="history-title">사찰 연혁</h2>
+      </header>
+      <ol class="temple-timeline">
+          <li class="temple-event">
+            <h4>1980년 10월</h4>
+            <div><p>창건주 설조 스님, 샌프란시스코 24가에 여래사 창건 및 개원</p><p lang="en">Founding abbot Ven. Seoljo establishes and opens YeoLaiSah on 24th Street in San Francisco.</p></div>
+          </li>
+          <li class="temple-event">
+            <h4>1982년</h4>
+            <div><p>샌프란시스코 펀스턴가(Fort Funston Ave.)로 이전</p><p lang="en">The temple moves to the Fort Funston Avenue location in San Francisco.</p></div>
+          </li>
+          <li class="temple-event">
+            <h4>1988년</h4>
+            <div><p>샌프란시스코 랜돌프가(Randolph St.)로 이전, 독립 사찰 기틀 마련</p><p lang="en">The temple moves to Randolph Street in San Francisco, laying the foundation for an independent temple.</p></div>
+          </li>
+          <li class="temple-event">
+            <h4>1991년</h4>
+            <div><p>수원 스님 주지 부임 (약 20년간 북가주 포교 및 도량 수호)</p><p lang="en">Ven. Suwon becomes abbot and guides the temple and its Buddhist outreach in Northern California for about twenty years.</p></div>
+          </li>
+          <li class="temple-event">
+            <h4>2009년</h4>
+            <div><p>현 위치인 샌브루노(San Bruno) 새 도량 매입 및 이전 개원법회 봉행</p><p lang="en">The temple acquires and moves to its current home in San Bruno, marking the opening with a Dharma service.</p></div>
+          </li>
+          <li class="temple-event">
+            <h4>2010년</h4>
+            <div><p>개원 30주년 기념법회 및 십일면 관음성상 점안식 봉행</p><p lang="en">The temple holds its 30th-anniversary Dharma service and consecrates a statue of the Eleven-Faced Bodhisattva of Compassion.</p></div>
+          </li>
+          <li class="temple-event">
+            <h4>2023년</h4>
+            <div><p>승원 스님 주지 취임 및 개원 43주년 기념법회 봉행</p><p lang="en">Ven. Seungwon is installed as abbot, and the temple holds its 43rd-anniversary Dharma service.</p></div>
+          </li>
+          <li class="temple-event">
+            <h4>현재</h4>
+            <div><p>북가주 한인 사회의 대표 수행·포교 도량으로 정진 중</p><p lang="en">YeoLaiSah continues as a place of Buddhist practice and outreach for Northern California’s Korean community.</p></div>
+          </li>
+      </ol>
+    </section>
+  </section>
+
+  <!-- Services & YouTube -->
+  <section id="services" class="py-24 bg-surface border-y border-gray-200 relative overflow-hidden">
+    <!-- Decorative background elements -->
+    <div class="absolute top-0 right-0 w-64 h-64 bg-dc-green/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 animate-pulse"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-dc-yellow/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 animate-pulse delay-700"></div>
+    
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl font-bold text-dc-dark">정기 법회 안내</h2>
+        <p class="text-dc-muted mt-2 uppercase tracking-widest text-sm">Regular Practice & Dharma Services</p>
+        <div class="h-1 w-16 bg-dc-green mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Sunday Service Card -->
+        <div class="bg-cream rounded-2xl p-8 border-t-4 border-dc-green shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal delay-100">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 bg-dc-green/10 text-dc-green rounded-full flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-dc-dark">일요 정기법회</h3>
+              <p class="text-sm text-dc-muted">Sunday Dharma Service</p>
+            </div>
+          </div>
+          
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start gap-3">
+              <span class="font-bold text-dc-green whitespace-nowrap">시간 | Time</span>
+              <span class="text-gray-700">매주 일요일 오전 11:00 <br><span class="text-sm text-gray-500">Every Sunday at 11:00 AM</span></span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="font-bold text-dc-green whitespace-nowrap">내용 | Detail</span>
+              <span class="text-gray-700">예불, 주지스님 법문, 명상 및 사찰 공양 <br><span class="text-sm text-gray-500">Chanting, Dharma Talk, Meditation, & Community Lunch</span></span>
+            </div>
+          </div>
+          
+          <a href="https://www.youtube.com/channel/UCOAcFTukaAHHAxAjh-EPtNQ" target="_blank" rel="noopener noreferrer" 
+             class="block text-center w-full bg-dc-green hover:bg-green-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+            유튜브 실시간 방송 시청 | Watch YouTube Live
+          </a>
+        </div>
+
+        <!-- YouTube VOD Card -->
+        <div class="bg-cream rounded-2xl p-8 border-t-4 border-dc-red shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between reveal delay-200">
+          <div>
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 bg-dc-red/10 text-dc-red rounded-full flex items-center justify-center">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-dc-dark">온라인 법문 다시보기</h3>
+                <p class="text-sm text-dc-muted">Dharma Talk Archive</p>
+              </div>
+            </div>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              사정상 법회에 참석하지 못하셨거나 스님의 지난 법문을 다시 듣고 싶으신 분들을 위해 유튜브 채널에 모든 영상이 업로드 됩니다.
+              <br><br>
+              <span class="text-sm text-gray-500 italic">Access our archive of past Dharma talks and services on our official YouTube channel at any time.</span>
+            </p>
+          </div>
+          
+          <a href="https://www.youtube.com/channel/UCOAcFTukaAHHAxAjh-EPtNQ" target="_blank" rel="noopener noreferrer" 
+             class="flex items-center justify-center gap-2 w-full bg-surface border-2 border-dc-red text-dc-red hover:bg-dc-red hover:text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+            ▶ 여래사 공식 채널 바로가기
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="regular-events" class="community-section" aria-labelledby="regular-heading">
+    <header class="community-header"><p lang="en">Regular Gatherings</p><h2 id="regular-heading">정기 모임</h2></header>
+    <div id="regular-list" class="community-regular"></div>
+    <noscript><p>격주 목요일 참선, 오후 7:30–9:00 (태평양 시간). <span lang="en">Meditation every other Thursday, 7:30–9:00 p.m. Pacific.</span></p></noscript>
+  </section>
+
+  <section id="gallery" class="community-section" aria-labelledby="album-heading">
+    <header class="community-header"><p lang="en">Photo Gallery</p><h2 id="album-heading">행사 앨범</h2></header>
+    <div class="community-albums" id="album-list"></div>
+    <noscript><p>법당 사진 | <a href="beopdang-wide.webp">Temple Hall photo</a></p></noscript>
+  </section>
+
+  <section id="donate" class="community-section" aria-labelledby="donation-heading">
+    <div class="community-feature">
+      <header class="community-header"><p lang="en">Support the Temple</p><h2 id="donation-heading">보시 안내</h2></header>
+      <p>Zelle로 여래사에 보시하실 수 있습니다. 송금 전 수취인 이름을 확인해 주세요.</p>
+      <p lang="en">To donate, use Zelle in your bank’s app and verify the recipient before sending.</p>
+      <div class="donation-actions"><strong id="donation-phone">650-588-8449</strong><button class="community-button" type="button" id="copy-zelle">번호 복사 <span lang="en">Copy number</span></button></div>
+      <p id="copy-result" role="status"></p>
+    </div>
+  </section>
+
+  <dialog id="announcement-dialog" aria-labelledby="flyer-title">
+    <div class="community-dialog-bar"><h2 id="flyer-title">공지 | Announcement</h2><button type="button" class="community-button" data-close aria-label="공지 닫기 / Close announcement" autofocus>닫기 <span lang="en">Close</span></button></div>
+    <div class="community-dialog-inner" id="dialog-flyer"></div>
+  </dialog>
+  <dialog id="album-dialog" aria-labelledby="album-title">
+    <div class="community-dialog-bar"><h2 id="album-title"></h2><button type="button" class="community-button" data-close aria-label="앨범 닫기 / Close album" autofocus>닫기 <span lang="en">Close</span></button></div>
+    <figure class="community-gallery-stage"><img id="album-image" alt=""><figcaption id="album-caption" aria-live="polite"></figcaption></figure>
+    <div class="community-gallery-controls">
+      <button id="previous-photo" type="button" class="community-button">이전 <span lang="en">Previous</span></button>
+      <button id="play-photos" type="button" class="community-button" aria-pressed="false">재생 <span lang="en">Play</span></button>
+      <button id="next-photo" type="button" class="community-button">다음 <span lang="en">Next</span></button>
+    </div>
+  </dialog>
+
+  <!-- Location & Contact -->
+  <section id="contact" class="py-24 bg-surface border-t border-gray-200">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl font-bold text-dc-dark">오시는 길</h2>
+        <p class="text-dc-muted mt-2 uppercase tracking-widest text-sm">Directions & Contact</p>
+        <div class="h-1 w-16 bg-dc-red mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6 bg-cream p-10 rounded-2xl border border-gray-100 shadow-lg reveal delay-100">
+          <div>
+            <h3 class="text-2xl font-bold text-dc-dark mb-1">대한불교조계종 여래사</h3>
+            <p class="text-sm text-dc-muted">YeoLaiSah Buddhist Temple</p>
+          </div>
+          
+          <div>
+            <p class="font-bold text-dc-green flex items-center gap-2 mb-1">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+              주소 | Address
+            </p>
+            <p class="text-gray-700 text-lg">200 San Bruno Ave W,<br>San Bruno, CA 94066</p>
+          </div>
+          
+          <div>
+            <p class="font-bold text-dc-green flex items-center gap-2 mb-1">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+              전화 | Phone
+            </p>
+            <a href="tel:16505888449" class="text-gray-700 text-lg hover:text-dc-red transition-colors">(650) 588-8449</a>
+          </div>
+
+          <div class="pt-4 border-t border-gray-200">
+            <p class="text-sm text-dc-muted flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              San Bruno Caltrain 역 도보 3분 거리
+            </p>
+            <p class="text-xs text-gray-400 ml-6 italic">Approx. 3-minute walk from San Bruno Caltrain Station</p>
+          </div>
+        </div>
+        
+        <div class="h-[450px] w-full rounded-2xl overflow-hidden shadow-xl border border-gray-200 reveal delay-200">
+          <iframe title="여래사 위치 지도 | Map to YeoLaiSah" 
+            class="w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
+            src="https://maps.google.com/maps?q=200%20San%20Bruno%20Ave%20W,%20San%20Bruno,%20CA%2094066&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+            loading="lazy"
+            style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dc-dark text-gray-300 py-12 border-t-4 border-dc-green mt-auto">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-xl font-bold text-white mb-2">대한불교조계종 여래사</h2>
+      <p class="text-sm text-gray-400 mb-6">YeoLaiSah Buddhist Temple</p>
+      
+      <p class="text-sm mb-2">200 San Bruno Ave W, San Bruno, CA 94066 | (650) 588-8449</p>
+      
+      <div class="flex justify-center gap-4 mt-6 mb-8">
+        <a href="https://www.youtube.com/channel/UCOAcFTukaAHHAxAjh-EPtNQ" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-dc-red hover:text-white transition-colors">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+      </div>
+      
+      <p class="text-xs text-gray-500 border-t border-gray-700 pt-6">
+        © 2026 대한불교조계종 여래사 (YeoLaiSah). All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // --- Notice Modal Logic ---
+    let noticeTrigger;
+    function openNotice(trigger) {
+      noticeTrigger = trigger;
+      const modal = document.getElementById('noticeModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.getElementById('notice-close').focus();
+    }
+    function closePopup() {
+      const modal = document.getElementById('noticeModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      noticeTrigger?.focus();
+    }
+    document.addEventListener('keydown', (event) => {
+      const modal = document.getElementById('noticeModal');
+      if (modal.classList.contains('hidden')) return;
+      if (event.key === 'Escape') closePopup();
+      if (event.key === 'Tab') {
+        const first = document.getElementById('notice-close');
+        const last = modal.querySelector('a');
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault(); last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault(); first.focus();
+        }
+      }
+    });
+
+    function toggleMobileMenu(forceClosed = false) {
+      const menu = document.getElementById('mobile-menu');
+      const closed = forceClosed ? (menu.classList.add('hidden'), true) : menu.classList.toggle('hidden');
+      document.getElementById('mobile-toggle').setAttribute('aria-expanded', String(!closed));
+    }
+    document.querySelectorAll('#mobile-menu a').forEach(link => link.addEventListener('click', () => toggleMobileMenu(true)));
+
+    // --- Dynamic Scroll Effects & Intersection Observer ---
+    
+    // Sticky Header Shrink Effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('main-header');
+      const navContent = document.getElementById('nav-content');
+      
+      if (window.scrollY > 50) {
+        header.classList.add('bg-surface/95', 'shadow-md');
+        header.classList.remove('bg-surface/80');
+        navContent.classList.add('py-2');
+        navContent.classList.remove('py-5');
+      } else {
+        header.classList.add('bg-surface/80');
+        header.classList.remove('bg-surface/95', 'shadow-md');
+        navContent.classList.add('py-5');
+        navContent.classList.remove('py-2');
+      }
+    });
+
+    // Intersection Observer for Scroll Animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15 // Trigger when 15% of the element is visible
+    };
+
+    if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('temple-animate');
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      scrollObserver.observe(el);
+    });
+    }
+
+  </script>
+</body>
+</html>

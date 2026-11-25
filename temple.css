@@ -1,0 +1,34 @@
+:root{--temple-ink:#292722;--temple-green:#205b4c;--temple-muted:#625a50;--temple-gold:#c39a5e;--temple-line:#dfd7c9}
+:focus-visible{outline:2px solid #be8135;outline-offset:4px}
+section[id]{scroll-margin-top:6rem}
+.temple-hero{background:#2b2019;text-align:center}
+.temple-hero-photo{display:block;width:100%;height:clamp(23rem,53vw,42rem);object-fit:cover;object-position:50% 48%}
+.temple-hero-copy{padding:clamp(1.4rem,3vw,2.5rem) 1rem clamp(1.5rem,3.5vw,2.8rem);color:#fff8e9;background:#2b2019}
+.temple-hero-copy h2{font-size:clamp(1.45rem,4vw,2.65rem);font-weight:700;line-height:1.45;letter-spacing:-.035em;word-break:keep-all}
+.temple-hero-copy p{color:#f2e3cf;font-size:clamp(.95rem,2vw,1.25rem);margin-top:.35rem}
+.temple-notice-button{margin-top:1.2rem;min-height:44px;padding:.5rem 1.1rem;border:1px solid #d7b37e;border-radius:5px;color:#fff5e2;font-weight:600}
+.temple-notice-button span{margin-left:.35rem;font-weight:400}
+.temple-notice-button:hover{background:#4b3729}
+.temple-about{width:min(100%,72rem);margin:auto;padding:clamp(3.2rem,8vw,6.5rem) clamp(1.15rem,5vw,3rem);color:var(--temple-ink)}
+.temple-greeting{display:grid;grid-template-columns:minmax(13rem,.75fr) minmax(0,1.65fr);gap:1.6rem clamp(2.3rem,6vw,5.5rem);align-items:start}
+.temple-greeting .temple-intro{grid-column:2;grid-row:1}
+.temple-profile{grid-column:1;grid-row:1 / span 2;margin:0}
+.temple-profile img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 34%;border-radius:12px;box-shadow:0 12px 28px #3825131a}
+.temple-profile figcaption{display:grid;gap:.22rem;margin-top:.9rem;color:var(--temple-green)}
+.temple-profile figcaption span{font-size:.93rem;color:var(--temple-muted)}
+.temple-kicker{font-size:.87rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--temple-green);margin-bottom:.45rem}
+.temple-intro h2{font-weight:700;font-size:clamp(1.85rem,4vw,2.65rem);line-height:1.3;letter-spacing:-.035em}
+.temple-letter{grid-column:2;font-size:1.0625rem;line-height:1.95;word-break:keep-all;overflow-wrap:anywhere}
+.temple-letter p+p{margin-top:1rem}
+.greeting-signature{font-weight:700;color:var(--temple-green)}
+.temple-translation{border-top:1px solid var(--temple-line);margin-top:1.65rem;padding-top:.65rem;word-break:normal}
+.temple-translation summary{color:var(--temple-green);font-weight:700;cursor:pointer;padding:.45rem 0}
+.temple-translation>div{padding-top:.55rem}
+.temple-history{margin-top:clamp(4rem,10vw,7.5rem);border-top:1px solid var(--temple-line);padding-top:clamp(2.5rem,6vw,4.25rem)}
+.temple-history header{text-align:center;margin-bottom:2.2rem}
+.temple-timeline{padding:0;max-width:51rem;margin:auto;border-block-start:1px solid var(--temple-line)}
+.temple-event{display:grid;grid-template-columns:9rem 1fr;gap:1rem;padding:1.05rem .4rem;border-bottom:1px solid var(--temple-line);line-height:1.65}
+.temple-event h4{color:var(--temple-green);font-weight:700;font-size:1.07rem}
+.temple-event [lang=en]{color:var(--temple-muted);font-size:.94rem;margin-top:.28rem}
+@media(max-width:700px){.temple-hero-photo{height:clamp(19rem,83vw,29rem);object-position:50% 45%}.temple-greeting{grid-template-columns:minmax(0,1fr);gap:1.35rem}.temple-greeting .temple-intro,.temple-profile,.temple-letter{grid-column:1;grid-row:auto}.temple-profile{max-width:18rem}.temple-event{grid-template-columns:1fr;gap:.22rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
