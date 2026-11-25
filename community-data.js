@@ -1,4 +1,4 @@
-/* Update this file for new announcements, schedules and photo albums. See MAINTAINING.md. */
+/* Update this file for new announcements, schedules and photo albums. See README.md. */
 window.templeCommunity = {
   announcement: {
     id: "dongji-2026", autoOpen: true, expires: "2026-12-20",
@@ -7,7 +7,7 @@ window.templeCommunity = {
     descriptionKo: "여래사에서 따뜻한 팥죽을 함께 나누며 새해의 건강과 평안을 기원합니다.",
     descriptionEn: "Join us at Yeo Lai Sah to share warm red bean porridge and wish one another health and peace in the new year.",
     location: "200 San Bruno Ave W, San Bruno, CA 94066",
-    flyerKo: "dongji-2026-ko.webp", flyerEn: "dongji-2026-en.webp"
+    flyerKo: "flyers/dongji-2026/dongji-2026-ko.webp", flyerEn: "flyers/dongji-2026/dongji-2026-en.webp"
   },
   recurring: [{
     titleKo: "참선 모임", titleEn: "Meditation Gathering",
@@ -26,8 +26,8 @@ window.templeCommunity = {
   albums: [{
     titleKo: "여래사 법당", titleEn: "Inside Yeo Lai Sah",
     photos: [
-      {src: "beopdang-wide.webp", ko: "연등과 꽃 공양이 있는 여래사 법당", en: "Temple hall with hanging lanterns and floral offerings"},
-      {src: "beopdang-altar.webp", ko: "법당 중앙 부처님과 불단", en: "The golden Buddha and altar at Yeo Lai Sah"}
+      {src: "photos/temple-hall/beopdang-wide.webp", ko: "연등과 꽃 공양이 있는 여래사 법당", en: "Temple hall with hanging lanterns and floral offerings"},
+      {src: "photos/temple-hall/beopdang-altar.webp", ko: "법당 중앙 부처님과 불단", en: "The golden Buddha and altar at Yeo Lai Sah"}
     ]
   }]
 };
